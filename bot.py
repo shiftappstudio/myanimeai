@@ -34,7 +34,7 @@ if not SAFETY_CHECKER:
     img2imgPipe.safety_checker = dummy_checker
 def image_to_bytes(image):
     bio = BytesIO()
-    crop_image = Image.open('/content/telegrambotv2/watermark.png')
+    crop_image = Image.open('/content/myanimeai/watermark.jpeg')
     image.paste(crop_image, (10, 10))
     bio.name = 'image.jpeg'
     image.save(bio, 'JPEG')
@@ -92,7 +92,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     replied_message = query.message.reply_to_message
     await query.answer()
-    progress_msg = await query.message.reply_text("Generating image for " {update.effective_user.username}" ...", reply_to_message_id=replied_message.message_id)
+    progress_msg = await query.message.reply_text("Generating image...", reply_to_message_id=replied_message.message_id)
     if query.data == "TRYAGAIN":
         if replied_message.photo is not None and len(replied_message.photo) > 0 and replied_message.caption is not None:
             photo_file = await replied_message.photo[-1].get_file()
